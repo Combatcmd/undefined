@@ -1,0 +1,10 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+/* Importing BEM Mixins */
+@import './utils/bem-mixin';
+
+/* Importing components */
+@import './components/layout';
+@import './components/navigation';
+@import './components/button';
