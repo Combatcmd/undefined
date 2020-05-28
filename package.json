@@ -21,10 +21,14 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@stomp/ng2-stompjs": "^7.2.0",
     "bootstrap": "^4.4.0",
     "moment": "^2.26.0",
+    "ngx-webstorage": "^5.0.0",
     "rxjs": "~6.5.4",
+    "sockjs-client": "^1.4.0",
     "tslib": "^1.10.0",
+    "webstomp-client": "^1.2.6",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

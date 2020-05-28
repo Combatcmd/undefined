@@ -1,9 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
+import { NgxWebstorageModule } from "ngx-webstorage";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { AppState } from "./app.service";
 
 import { HomepageModule } from "./homepage";
 import { FaqModule, InstructionsModule } from "./external";
@@ -24,6 +26,7 @@ import { SharedModule } from "./shared";
   ],
   imports: [
     BrowserModule,
+    NgxWebstorageModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
@@ -32,7 +35,7 @@ import { SharedModule } from "./shared";
     InstructionsModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AppState],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
