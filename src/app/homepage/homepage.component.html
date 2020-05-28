@@ -103,34 +103,6 @@
     </div>
   </div>
   <lots><router-outlet></router-outlet></lots>
-  <!-- <div class="row mt-54px" *ngIf="news && news.length">
-    <div
-      class="col-12 pl-0 pr-0 d-flex flex-row justify-content-between homepage__block-header"
-    >
-      <h2 jhiTranslate="main.news">Новости</h2>
-      <p routerLink="/ext/news">Все новости</p>
-    </div>
-    <div class="col-8 pl-0">
-      <div class="homepage__news homepage__news--main">
-        <div routerLink="/ext/news">
-          <span>{{utils.dateInRus(news[0].publishTime)}}</span>
-          <h1 [innerHTML]="news[0].title"></h1>
-          <p [innerHTML]="news[0].body.slice(0,300) + '...'"></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 pr-0">
-      <div
-        routerLink="/ext/news"
-        class="col-12 homepage__news homepage__news--short"
-        *ngFor="let i of [1,2,3,4];"
-      >
-        <span>{{utils.dateInRus(news[i].publishTime)}}</span>
-        <h1 [innerHTML]="news[i].title.slice(0,60) + '...'"></h1>
-        <p [innerHTML]="news[i].body.slice(0,60) + '...'"></p>
-      </div>
-    </div>
-  </div> -->
   <div class="row mt--54 mb-4">
     <div class="col-8 px-0">
       <iframe
@@ -144,7 +116,7 @@
     </div>
     <div class="col-4 pr-0">
       <div class="col-12 homepage__instructions">
-        <button class="button button--info">
+        <button class="button button--info" (click)="openModal(content)">
           <div class="button__icon">
             <svg
               width="56"
@@ -164,7 +136,7 @@
         </button>
       </div>
       <div class="col-12 homepage__instructions">
-        <button class="button button--info">
+        <button class="button button--info" (click)="openModal(content2)">
           <div class="button__icon">
             <svg
               width="56"
@@ -184,7 +156,7 @@
         </button>
       </div>
       <div class="col-12 homepage__instructions">
-        <button class="button button--info">
+        <button class="button button--info" (click)="openModal(content3)">
           <div class="button__icon">
             <svg
               width="56"
@@ -207,8 +179,8 @@
   </div>
 </div>
 
-<!-- <ng-template #content let-d="dismiss">
-  <div class="modal-header">
+<ng-template #content let-d="dismiss">
+  <div class="modal__header">
     <button
       type="button"
       class="close"
@@ -216,7 +188,7 @@
       (click)="d('Cross click')"
     ></button>
   </div>
-  <div class="modal-body">
+  <div class="modal__body">
     <iframe
       width="800"
       height="452"
@@ -229,7 +201,7 @@
 </ng-template>
 
 <ng-template #content2 let-d="dismiss">
-  <div class="modal-header">
+  <div class="modal__header">
     <button
       type="button"
       class="close"
@@ -237,7 +209,7 @@
       (click)="d('Cross click')"
     ></button>
   </div>
-  <div class="modal-body">
+  <div class="modal__body">
     <iframe
       width="800"
       height="452"
@@ -250,7 +222,7 @@
 </ng-template>
 
 <ng-template #content3 let-d="dismiss">
-  <div class="modal-header">
+  <div class="modal__header">
     <button
       type="button"
       class="close"
@@ -258,7 +230,7 @@
       (click)="d('Cross click')"
     ></button>
   </div>
-  <div class="modal-body">
+  <div class="modal__body">
     <iframe
       width="800"
       height="452"
@@ -268,4 +240,4 @@
       allowfullscreen
     ></iframe>
   </div>
-</ng-template> -->
+</ng-template>
