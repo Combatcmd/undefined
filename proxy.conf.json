@@ -1,0 +1,102 @@
+{
+  "/eprocpko": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocanalytics": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocworkflow": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocuaa": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocglobal": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocplan": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eproctender": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocfilestorage": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprockuz": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocreport": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocnotification": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/api": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/management": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprockalkan": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/swagger-resources": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/v2/api-docs": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/h2-console": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/ws": {
+    "target": "ws://eproc.sapasoft.kz",
+    "ws": true,
+    "loglevel": "debug"
+  },
+  "/eprockmz": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  },
+  "/eprocsearch": {
+    "target": "http://localhost:17080",
+    "secure": false,
+    "loglevel": "debug"
+  }
+}

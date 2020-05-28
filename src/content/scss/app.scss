@@ -4,7 +4,12 @@
 /* Importing BEM Mixins */
 @import './utils/bem-mixin';
 
+/* Importing Theme */
+@import './theme.scss';
+
 /* Importing components */
 @import './components/layout';
 @import './components/navigation';
 @import './components/button';
+@import './components/homepage';
+@import './components/margins';

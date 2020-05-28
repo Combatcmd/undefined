@@ -1,0 +1,143 @@
+<div class="row mt--54">
+  <div
+    class="col-12 pl-0 pr-0 d-flex flex-row justify-content-between homepage__block-header"
+  >
+    <h2>Новые лоты</h2>
+    <p>Посмотреть все</p>
+  </div>
+  <div class="col-6 lot" *ngFor="let v of result">
+    <div class="lot__card">
+      <div>
+        <span class="lot__dates"
+          >{{utils.dateFormat(v?.acceptanceBeginDateTime) + ' - ' +
+          utils.dateFormat(v?.acceptanceEndDateTime)}}</span
+        >
+        <p class="lot__title">
+          {{v[utils.createFieldWCurLang('name')]}}
+        </p>
+      </div>
+      <div>
+        <p class="lot__price">
+          <span class="lot__icon"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="9" cy="9" r="9" fill="#F7F9FB" />
+              <path
+                d="M5 6.88235C5 6.62245 5.25584 6.41176 5.57143 6.41176H12.4286C12.7442 6.41176 13 6.62245 13 6.88235C13 7.14225 12.7442 7.35294 12.4286 7.35294H5.57143C5.25584 7.35294 5 7.14225 5 6.88235Z"
+                fill="#484B80"
+              />
+              <path
+                d="M5 5.47059C5 5.21069 5.25584 5 5.57143 5H12.4286C12.7442 5 13 5.21069 13 5.47059C13 5.73049 12.7442 5.94118 12.4286 5.94118H5.57143C5.25584 5.94118 5 5.73049 5 5.47059Z"
+                fill="#484B80"
+              />
+              <path
+                d="M9 13C8.68441 13 8.42857 12.7893 8.42857 12.5294L8.42857 7.35294C8.42857 7.09304 8.68441 6.88235 9 6.88235C9.31559 6.88235 9.57143 7.09304 9.57143 7.35294V12.5294C9.57143 12.7893 9.31559 13 9 13Z"
+                fill="#484B80"
+              />
+            </svg> </span
+          >{{(v?.sumTruNoNds).toLocaleString('ru')}}<span
+            class="lot__price--per-unit"
+            *ngIf="v?.price"
+            >/{{(v?.price).toLocaleString('ru')}}</span
+          >
+        </p>
+        <p class="lot__customer">
+          <span class="lot__icon"
+            ><svg
+              width="17"
+              height="13"
+              viewBox="0 0 17 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 9.55556V5.66667C16 4.80756 15.3284 4.11111 14.5 4.11111H11.5M16 9.55556V13.4444C16 14.3036 15.3284 15 14.5 15H2.5C1.67157 15 1 14.3036 1 13.4444V9.55556M16 9.55556H11.5M1 9.55556V5.66667C1 4.80756 1.67157 4.11111 2.5 4.11111H5.5M1 9.55556H5.5M5.5 9.55556V8M5.5 9.55556V11.1111M5.5 9.55556H11.5M11.5 9.55556V8M11.5 9.55556V11.1111M11.5 4.11111V2.55556C11.5 1.69645 10.8284 1 10 1H7C6.17157 1 5.5 1.69645 5.5 2.55556V4.11111M11.5 4.11111H5.5"
+                stroke="#4DA1FF"
+                stroke-width="1.3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg> </span
+          >{{v?.customer[utils.createFieldWCurLang('name')]}}
+        </p>
+        <p class="lot__addr">
+          <span class="lot__icon"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="9" cy="9" r="9" fill="#F7F9FB" />
+              <path
+                d="M13 7.88889C13 10.4472 10.6438 12.6783 9.54813 13.5775C9.22535 13.8424 8.77465 13.8424 8.45187 13.5775C7.35622 12.6783 5 10.4472 5 7.88889C5 5.74111 6.79086 4 9 4C11.2091 4 13 5.74111 13 7.88889Z"
+                stroke="#484B80"
+                stroke-width="1.2"
+              />
+              <circle cx="9" cy="8" r="2" stroke="#484B80" stroke-width="1.2" />
+            </svg> </span
+          >{{v?.addressDto[utils.createFieldWCurLang('country')]}},
+          {{v?.addressDto[utils.createFieldWCurLang('katoFullName')]}},
+          {{v?.addressDto.street.replace('ИЦА','.')}}
+        </p>
+      </div>
+      <!-- <div class="homepage__lot--actions">
+        <button
+          *ngIf="user?.company?.identifier !== v?.customer?.identifier && !checkBasket(v.id)"
+          class="button button--secondary button--flex"
+          (click)="addLot(v.id)"
+        >
+          <div class="button__icon">
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.87879 3L2.33333 1H1M2.87879 3L4.33333 8.33333L13 7.66667V3.66667L2.87879 3Z"
+                stroke="white"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="5.66666" cy="11.0001" r="1.33333" fill="white" />
+              <circle cx="11" cy="11.0001" r="1.33333" fill="white" />
+            </svg>
+          </div>
+          Добавить лот в корзину
+        </button>
+        <button
+          *ngIf="checkBasket(v.id)"
+          class="button button--secondary button--flex"
+        >
+          <div class="button__icon">
+            <svg
+              width="14"
+              height="10"
+              viewBox="0 0 14 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13 1L5 9L1 5"
+                stroke="white"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          Лот добавлен в корзину
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>

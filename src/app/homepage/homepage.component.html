@@ -1,1 +1,271 @@
-<p>homepage works!</p>
+<div class="container-fluid slider">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-6 d-flex flex-column justify-content-center">
+        <h1>Площадка закупок «ztender»</h1>
+        <p>
+          Предназначена для проведения закупок в режиме реального времени.
+        </p>
+        <button
+          class="button button--primary br4"
+          jhiTranslate="layouts.register"
+        >
+          Зарегистрироваться
+        </button>
+      </div>
+      <div class="col-6 slider__image"></div>
+    </div>
+  </div>
+</div>
+<div class="container homepage">
+  <div class="row">
+    <div class="homepage__search">
+      <form>
+        <input
+          class="input"
+          type="text"
+          [(ngModel)]="keyword"
+          name="keywordName"
+          #keywordName="ngModel"
+          placeholder="Введите ключевое слово, наименование лота, БИН заказчика"
+        />
+        <button type="submit" class="homepage__search-button">
+          <div class="button__icon d-flex">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.7803 16.7196L14.5876 13.5266C15.7809 12.0953 16.5 10.2554 16.5 8.25057C16.5 3.70121 12.799 0 8.24999 0C3.70095 0 0 3.70116 0 8.25057C0 12.8 3.70095 16.5011 8.24999 16.5011C10.2553 16.5011 12.0957 15.7815 13.527 14.5875L16.7197 17.7803C16.8661 17.9268 17.0581 18 17.25 18C17.4419 18 17.6339 17.9268 17.7803 17.7803C18.0732 17.4874 18.0732 17.0125 17.7803 16.7196ZM1.8 8.25057C1.8 4.52836 4.52805 1.8001 8.24999 1.8001C11.9719 1.8001 14.7 4.52836 14.7 8.25057C14.7 11.9728 11.9719 14.701 8.24999 14.701C4.52805 14.701 1.8 11.9728 1.8 8.25057Z"
+              />
+            </svg>
+          </div>
+        </button>
+      </form>
+      <button class="homepage__search-details">
+        <div class="button__icon">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.25 6.85C14.7194 6.85 15.1 6.46944 15.1 6C15.1 5.53056 14.7194 5.15 14.25 5.15V6.85ZM8.25 5.15C7.78056 5.15 7.4 5.53056 7.4 6C7.4 6.46944 7.78056 6.85 8.25 6.85V5.15ZM14.25 5.15H8.25V6.85H14.25V5.15Z"
+            />
+            <path
+              d="M9.75 12.85C10.2194 12.85 10.6 12.4694 10.6 12C10.6 11.5306 10.2194 11.15 9.75 11.15V12.85ZM3.75 11.15C3.28056 11.15 2.9 11.5306 2.9 12C2.9 12.4694 3.28056 12.85 3.75 12.85V11.15ZM9.75 11.15H3.75V12.85H9.75V11.15Z"
+            />
+            <circle cx="5.25" cy="6" r="2.625" stroke-width="1.7" />
+            <circle cx="12.75" cy="12" r="2.625" stroke-width="1.7" />
+          </svg>
+        </div>
+        Расширенный поиск
+      </button>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-4 pl-0">
+      <div class="homepage__card">
+        <div
+          class="homepage__card-item homepage__card-item--card1"
+          [routerLink]="['/ext','information']"
+          [queryParams]="{instrGroup: 'SUPPLIERS'}"
+        >
+          <h2>Поставщикам</h2>
+          <p>Руководство пользования системой для поставщиков</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="homepage__card">
+        <div
+          class="homepage__card-item homepage__card-item--card2"
+          [routerLink]="['/ext','information']"
+          [queryParams]="{instrGroup: 'BUYERS'}"
+        >
+          <h2>Заказчикам</h2>
+          <p>Руководство пользования системой для заказчиков</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 pr-0">
+      <div class="homepage__card" routerLink="/ext/faq">
+        <div class="homepage__card-item homepage__card-item--card3">
+          <h2>Есть вопросы?</h2>
+          <p>Часто задаваемые вопросы</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <lots><router-outlet></router-outlet></lots>
+  <!-- <div class="row mt-54px" *ngIf="news && news.length">
+    <div
+      class="col-12 pl-0 pr-0 d-flex flex-row justify-content-between homepage__block-header"
+    >
+      <h2 jhiTranslate="main.news">Новости</h2>
+      <p routerLink="/ext/news">Все новости</p>
+    </div>
+    <div class="col-8 pl-0">
+      <div class="homepage__news homepage__news--main">
+        <div routerLink="/ext/news">
+          <span>{{utils.dateInRus(news[0].publishTime)}}</span>
+          <h1 [innerHTML]="news[0].title"></h1>
+          <p [innerHTML]="news[0].body.slice(0,300) + '...'"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 pr-0">
+      <div
+        routerLink="/ext/news"
+        class="col-12 homepage__news homepage__news--short"
+        *ngFor="let i of [1,2,3,4];"
+      >
+        <span>{{utils.dateInRus(news[i].publishTime)}}</span>
+        <h1 [innerHTML]="news[i].title.slice(0,60) + '...'"></h1>
+        <p [innerHTML]="news[i].body.slice(0,60) + '...'"></p>
+      </div>
+    </div>
+  </div> -->
+  <div class="row mt--54 mb-4">
+    <div class="col-8 px-0">
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/JV59DcRQrN8"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="col-4 pr-0">
+      <div class="col-12 homepage__instructions">
+        <button class="button button--info">
+          <div class="button__icon">
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="28" cy="28" r="28" fill="none" />
+              <path
+                d="M35.7 27.8268C35.8333 27.9038 35.8333 28.0962 35.7 28.1732L24.3 34.755C24.1667 34.832 24 34.7358 24 34.5818L24 21.4182C24 21.2642 24.1667 21.168 24.3 21.245L35.7 27.8268Z"
+                fill="none"
+              />
+            </svg>
+          </div>
+          <p>Презентация по Планированию</p>
+        </button>
+      </div>
+      <div class="col-12 homepage__instructions">
+        <button class="button button--info">
+          <div class="button__icon">
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="28" cy="28" r="28" fill="#56BE89" />
+              <path
+                d="M35.7 27.8268C35.8333 27.9038 35.8333 28.0962 35.7 28.1732L24.3 34.755C24.1667 34.832 24 34.7358 24 34.5818L24 21.4182C24 21.2642 24.1667 21.168 24.3 21.245L35.7 27.8268Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <p>Презентация по подаче заявки ЦП ЦПП</p>
+        </button>
+      </div>
+      <div class="col-12 homepage__instructions">
+        <button class="button button--info">
+          <div class="button__icon">
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="28" cy="28" r="28" fill="#56BE89" />
+              <path
+                d="M35.7 27.8268C35.8333 27.9038 35.8333 28.0962 35.7 28.1732L24.3 34.755C24.1667 34.832 24 34.7358 24 34.5818L24 21.4182C24 21.2642 24.1667 21.168 24.3 21.245L35.7 27.8268Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <p>Как создать и провести закупку</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <ng-template #content let-d="dismiss">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <iframe
+      width="800"
+      height="452"
+      src="https://www.youtube.com/embed/v169otwQtrQ"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</ng-template>
+
+<ng-template #content2 let-d="dismiss">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <iframe
+      width="800"
+      height="452"
+      src="https://www.youtube.com/embed/pTPkeVZJxms"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</ng-template>
+
+<ng-template #content3 let-d="dismiss">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <iframe
+      width="800"
+      height="452"
+      src="https://www.youtube.com/embed/5lgo0IH1xuo"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</ng-template> -->
