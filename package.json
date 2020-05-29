@@ -7,8 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n:extract": "ngx-translate-extract --input ./src/app --output ./src/i18n/{ru,en}.json --format namespaced-json"
   },
+  "root": "",
+  "sourceRoot": "src",
+  "prefix": "app",
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.9",
@@ -20,7 +24,10 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@biesbjerg/ngx-translate-extract": "^7.0.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ngx-translate/core": "^12.1.2",
+    "@ngx-translate/http-loader": "^4.0.0",
     "@stomp/ng2-stompjs": "^7.2.0",
     "bootstrap": "^4.4.0",
     "moment": "^2.26.0",

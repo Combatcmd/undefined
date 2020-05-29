@@ -1,10 +1,9 @@
-test
-<!-- <div class="container">
-  <div class="row pv-3 page__breadcrumbs">
+<div class="container">
+  <div class="row pv-3 breadcrumbs">
     <a routerLink="/ext">Главная</a>
     <span>FAQ</span>
   </div>
-  <div class="row page__title">FAQ</div>
+  <div class="row title">FAQ</div>
   <div class="row">
     <div class="col-3">
       <div class="row filter filter--title">Разделы</div>
@@ -42,7 +41,7 @@ test
             [(ngModel)]="search"
             name="searchText"
             #searchText="ngModel"
-            [placeholder]="'faq.searchPlaceholder' | tr"
+            [placeholder]="'faq.searchPlaceholder' | translate"
             (keyup.enter)="page=1; load();"
           />
           <button (click)="page=1; load();">
@@ -63,7 +62,7 @@ test
         </div>
       </div>
       <div
-        *ngFor="let el of faqList; let i = index; trackBy: trackId"
+        *ngFor="let el of faqList"
         class="search__result-faq__container"
       >
         <div
@@ -141,7 +140,7 @@ test
         </div>
       </div>
       <div *ngIf="faqList && faqList.length" class="row pagination__container">
-        <ngb-pagination
+        <!-- <ngb-pagination
           class="pagination"
           [collectionSize]="totalItems"
           size="sm"
@@ -149,27 +148,7 @@ test
           [maxSize]="3"
           [(page)]="page"
           (pageChange)="loadPage(page)"
-        ></ngb-pagination>
-        <button class="button button--load-more" (click)="loadMore()">
-          <div class="button__icon button__icon--load-more">
-            <svg
-              width="16"
-              height="19"
-              viewBox="0 0 16 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 11C1 14.866 4.13401 18 8 18C11.866 18 15 14.866 15 11C15 7.13401 11.866 4 8 4H5M5 4L8 1M5 4L8 7"
-                stroke="black"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-          Загрузить еще
-        </button>
+        ></ngb-pagination> -->
       </div>
     </div>
   </div>
@@ -177,10 +156,10 @@ test
 
 <ng-template #createFaqDialog let-c="close" let-d="dismiss">
   <div class="faq-modal__header">
-    <h4 *ngIf="!faq?.id" class="faq-modal__title" jhiTranslate="faq.addFaq">
+    <h4 *ngIf="!faq?.id" class="faq-modal__title">
       Добавить вопрос
     </h4>
-    <h4 *ngIf="faq?.id" class="faq-modal__title" jhiTranslate="faq.editFaq">
+    <h4 *ngIf="faq?.id" class="faq-modal__title">
       Редактировать вопрос
     </h4>
     <button
@@ -239,7 +218,7 @@ test
           <label class="faq-modal__label" for="questionRu">Вопрос*</label>
           <input
             [(ngModel)]="faq.questionRu"
-            [title]="'faq.questionRu'|tr"
+            [title]="'faq.questionRu'| translate"
             [required]="true"
             name="questionRu"
             #questionRu="ngModel"
@@ -251,7 +230,7 @@ test
           <label class="faq-modal__label" for="answerRu">Ответ*</label>
           <textarea
             [(ngModel)]="faq.answerRu"
-            [title]="'faq.answerRu'|tr"
+            [title]="'faq.answerRu'| translate"
             [required]="true"
             name="answerRu"
             #answerRu="ngModel"
@@ -265,7 +244,6 @@ test
       <div class="content__layout">
         <button
           type="submit"
-          jhiTranslate="faq.save"
           class="button button--primary m-auto"
           [disabled]="faqForm.form.invalid"
         >
@@ -274,4 +252,4 @@ test
       </div>
     </form>
   </div>
-</ng-template> -->
+</ng-template>

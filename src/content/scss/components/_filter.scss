@@ -1,0 +1,419 @@
+@include b(filter) {
+  border-bottom: 1px solid $border-color-filter-divider;
+  padding: 15px 0;
+  &:first-child {
+    padding-top: 0;
+    border-bottom: 2px solid $border-color-filter-header;
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+  label {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: $text-color-primary;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  .fa {
+    &:before {
+      color: $text-color-primary;
+    }
+  }
+  @include m(active) {
+    color: #56be89 !important;
+  }
+  @include m(faq) {
+    color: $text-color-primary;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    > div {
+      cursor: pointer;
+    }
+  }
+  @include m(title) {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-color-filter-title;
+    display: flex;
+    align-items: center;
+    .button__icon {
+      display: flex;
+      svg {
+        path {
+          fill: $text-color-filter-title;
+        }
+        circle {
+          stroke: $text-color-filter-title;
+        }
+      }
+    }
+  }
+  @include m(clear) {
+    svg {
+      path {
+        stroke: $text-color-filter-title;
+      }
+    }
+  }
+  @include e(header) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $text-color-filter-header;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
+  @include e(sort) {
+    display: flex;
+    @include m(size) {
+      margin: 0 15px 0 50px;
+      position: relative;
+      select {
+        border: none;
+        background: none;
+        font-weight: 500;
+        color: $text-color-primary;
+        -webkit-appearance: none;
+        &,
+        &:focus {
+          outline: none;
+        }
+        &::-ms-expand {
+          display: none;
+        }
+      }
+      &::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        top: 45%;
+        right: -13px;
+        transform: translateY(-50%) rotate(45deg);
+        border-right: 2px solid $text-color-primary;
+        border-bottom: 2px solid $text-color-primary;
+        transition: 0.3s;
+      }
+    }
+    @include m(date) {
+      position: relative;
+      select {
+        border: none;
+        background: none;
+        font-weight: 500;
+        color: $text-color-primary;
+        -webkit-appearance: none;
+        &,
+        &:focus {
+          outline: none;
+        }
+        &::-ms-expand {
+          display: none;
+        }
+      }
+      &::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        top: 45%;
+        right: -13px;
+        transform: translateY(-50%) rotate(45deg);
+        border-right: 2px solid $text-color-primary;
+        border-bottom: 2px solid $text-color-primary;
+        transition: 0.3s;
+      }
+    }
+    span {
+      font-weight: 500;
+      color: $text-color-primary;
+    }
+  }
+  @include e(keyword) {
+    background: $element-bg-primary2;
+    border: 1px solid $border-color-filter;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 15px;
+    input {
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      padding: 0 24px;
+      border: 0;
+      font-size: 15px;
+      color: $text-color-primary;
+      &,
+      &:focus {
+        outline: 0;
+      }
+    }
+    button {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      z-index: 3;
+      svg {
+        path {
+          fill: $text-color-primary;
+        }
+      }
+      &:hover {
+        background-color: $element-bg-secondary;
+        svg {
+          path {
+            fill: $text-color-active;
+          }
+        }
+      }
+      &,
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  @include e(layout) {
+    @include b(filter) {
+      @include e(icon) {
+        display: flex;
+        position: absolute;
+        z-index: 4;
+        transform: translateY(-50%);
+        svg {
+          path {
+            fill: $text-color-primary;
+          }
+        }
+        @include m(search) {
+          top: 50%;
+          right: 15px;
+        }
+        @include m(date) {
+          top: 50%;
+          right: 15px;
+        }
+        @include m(location) {
+          top: 23px;
+          left: 12px;
+          svg {
+            path {
+              fill: none;
+              stroke: $text-color-primary;
+            }
+            ellipse {
+              stroke: $text-color-primary;
+            }
+          }
+        }
+        @include m(close) {
+          top: 23px;
+          right: 12px;
+          z-index: 3;
+          cursor: pointer;
+          &.fa {
+            font-size: 15px;
+            top: 23px;
+            right: 12px;
+            z-index: 3;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    width: 100%;
+    position: relative;
+    .search__input,
+    .input--datepicker,
+    .search input,
+    input,
+    .dropdown-select,
+    .m-select,
+    .m-input {
+      height: 46px;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
+      color: $text-color-primary;
+      border-radius: 3px;
+      border: 1px solid $border-color-filter;
+      padding: 0 12px;
+      background-color: $container-bg-primary;
+      &::placeholder {
+        color: $text-color-primary;
+        opacity: 0.4;
+      }
+    }
+    .input__kato {
+      padding-left: 30px;
+      color: $text-color-primary;
+      &::placeholder {
+        color: $text-color-primary;
+        opacity: 1;
+      }
+    }
+    .substrate {
+      background-color: $container-bg-primary;
+      border: 0;
+    }
+    .fa {
+      position: absolute;
+      color: $text-color-primary;
+      right: 13px;
+      top: 50%;
+      font-size: 18px;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    @include m(half) {
+      width: calc(50% - 10px);
+    }
+    .dp-day-calendar-container,
+    .dp-month-calendar-container {
+      background-color: $container-bg-primary;
+      .dp-calendar-nav-left,
+      .dp-calendar-nav-right,
+      .dp-nav-header-btn,
+      .dp-nav-header {
+        background-color: transparent;
+        color: $text-color-primary;
+        &::before {
+          color: $text-color-primary;
+        }
+      }
+      .dp-calendar-week,
+      .dp-months-row,
+      .dp-weekdays {
+        padding: 5px;
+        &:nth-child(even) {
+          background-color: $element-bg-primary2;
+        }
+      }
+      .dp-calendar-day,
+      .dp-calendar-month {
+        padding: 0;
+        background-color: transparent;
+        color: $text-color-primary;
+      }
+      .dp-current-day,
+      .dp-current-month {
+        color: #fff;
+        background-color: #56be89;
+        border: none;
+      }
+      .dp-popup {
+        border: 0;
+      }
+      .dp-calendar-wrapper,
+      .dp-calendar-nav-container {
+        border: 1px solid $border-color-filter;
+      }
+    }
+  }
+  @include e(divider) {
+    width: 10px;
+    height: 1px;
+    background-color: $border-color-filter;
+    margin: 0 5px;
+  }
+  @include e(checkbox) {
+    display: none;
+    & + label {
+      display: flex;
+      opacity: 1;
+      margin-bottom: 0;
+      & > div {
+        width: 16px;
+        height: 16px;
+        background: $container-bg-primary;
+        border: 1px solid $border-color-filter;
+        box-sizing: border-box;
+        border-radius: 1px;
+        position: relative;
+        margin-right: 5px;
+      }
+    }
+    &:checked + label > div {
+      background: #56be89;
+      border-color: #56be89;
+      border-radius: 1px;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 5px;
+        border-left: 1.7px solid #fcfcfc;
+        border-bottom: 1.7px solid #fcfcfc;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+  @include m(modal) {
+    width: 100%;
+  }
+  @include e(row) {
+    display: flex;
+    width: 100%;
+    @include m(buttons) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  @include e(faq) {
+    color: $text-color-primary;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    > div {
+      cursor: pointer;
+    }
+  }
+  @include e(title) {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-color-filter-title;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color-filter-divider;
+    padding: 15px 0;
+    .button__icon {
+      display: flex;
+      svg {
+        path {
+          fill: $text-color-filter-title;
+        }
+        circle {
+          stroke: $text-color-filter-title;
+        }
+      }
+    }
+  }
+}

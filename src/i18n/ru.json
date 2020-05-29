@@ -1,0 +1,23 @@
+{
+  "faq": {
+    "title": "Часто задаваемые вопросы",
+    "searchPlaceholder": "Поиск",
+    "addFaq": "Добавить вопрос",
+    "editFaq": "Редактировать вопрос",
+    "byRecipient": "По назначению",
+    "byDate": "По дате",
+    "edit": "Редактировать",
+    "save": "Сохранить",
+    "faqGroupCode": "Процесс",
+    "questionRu": "Вопрос",
+    "questionKk": "Вопрос",
+    "answerRu": "Ответ",
+    "answerKk": "Ответ"
+  },
+  "ADVERTS": "Закупки",
+  "CONTRACTS": "Договоры",
+  "LOTS": "Лоты",
+  "PLAN": "Планы",
+  "REGISTRATION": "Регистрация",
+  "LIST_PARTICIPANTS": "Список участников"
+}
