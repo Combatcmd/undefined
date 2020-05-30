@@ -1,0 +1,68 @@
+@include b(faq) {
+  @include e(container) {
+    position: relative;
+  }
+  @include e(question) {
+    border-top: 1px solid $border-color-search-item2;
+    padding: 24px;
+    font-size: 16px;
+    line-height: 19px;
+    color: $text-color-primary;
+    opacity: 0.6;
+    display: flex;
+    transition: 0.3s;
+    background-color: $element-bg-primary;
+    @include m(active) {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      color: $text-color-primary;
+      background-color: $element-bg-primary2;
+      opacity: 1;
+      padding-bottom: 9px;
+      svg {
+        transform: rotate(45deg);
+      }
+    }
+  }
+  @include e(answer-container) {
+    padding: 0 25px;
+    background-color: $element-bg-primary2;
+    transition: 0.3s;
+    height: 0;
+    overflow: hidden;
+    @include m(active) {
+      height: auto;
+    }
+  }
+  @include e(answer-body) {
+    font-size: 16px;
+    line-height: 22px;
+    color: $text-color-primary;
+    opacity: 0.6;
+    padding-bottom: 20px;
+  }
+  @include e(toggler) {
+    display: flex;
+    justify-content: flex-end;
+    svg {
+      path {
+        stroke: $text-color-filter-title;
+      }
+    }
+  }
+  @include e(buttons) {
+    position: absolute;
+    right: -30px;
+    top: 25px;
+    transform: translateX(100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      background: transparent;
+      border: 0;
+      display: flex;
+    }
+  }
+}

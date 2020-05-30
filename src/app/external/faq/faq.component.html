@@ -61,21 +61,18 @@
           </button>
         </div>
       </div>
-      <div
-        *ngFor="let el of faqList"
-        class="search__result-faq__container"
-      >
+      <div *ngFor="let el of faqList" class="faq__container">
         <div
-          class="row search__result-faq__question"
+          class="row faq__question"
           (click)="selectItem(el)"
           style="cursor: pointer;"
-          [ngClass]="{'search__result-faq__question--active': el.selected}"
+          [ngClass]="{'faq__question--active': el.selected}"
         >
           <div class="col-10">
             {{el[utils.createFieldWCurLang('question')]}}
           </div>
           <div class="col-2">
-            <div class="search__result-faq__toggler">
+            <div class="faq__toggler">
               <svg
                 width="18"
                 height="18"
@@ -95,17 +92,17 @@
           </div>
         </div>
         <div
-          class="row search__result-faq__answer"
-          [ngClass]="{'search__result-faq__answer--active': el.selected}"
+          class="row faq__answer-container"
+          [ngClass]="{'faq__answer-container--active': el.selected}"
         >
           <div class="col-10">
             <div
-              class="search__result-faq__answer-body"
+              class="faq__answer-body"
               [innerHTML]="el[utils.createFieldWCurLang('answer')]"
             ></div>
           </div>
         </div>
-        <div class="search__result-faq__buttons" *ngIf="isAdmin()">
+        <div class="faq__buttons" *ngIf="isAdmin()">
           <button class="mr-2" (click)="delete(el.id)">
             <svg
               width="12"
