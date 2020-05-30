@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { createRequestOption, UtilsService } from '../../shared';
 
 @Injectable()
-export class FaqService {
-  private resourceUrl = '/eprocglobal/api/faq';
-  private openSearchUrl = '/eprocsearch/open-api/faq';
-  private getNameAndCountUrl = '/eprocsearch/open-api/getNameAndCountFaq';
+export class InformationService {
+  private resourceUrl = '/eprocglobal/api/instruction';
+  private openSearchUrl = '/eprocsearch/open-api/instruction';
+  private getNameAndCountUrl =
+    '/eprocsearch/open-api/instruction/getNameAndCount';
   constructor(private http: HttpClient, private utils: UtilsService) {}
 
-  getNameAndCount(): Observable<any> {
-    return this.http.get(this.getNameAndCountUrl);
+  getNameAndCount(isAuth: boolean, type: string): Observable<any> {
+    return this.http.get(
+      `${this.getNameAndCountUrl}?onlyAuthUser=${isAuth}&instrType=${type}`
+    );
   }
 
-  get(paramsArray?, req?: any): Observable<HttpResponse<object>> {
+  get(paramsArray?, req?: any): Observable<any> {
     const options = createRequestOption(req);
     const params = paramsArray ? this.utils.createUrlParams(paramsArray) : '';
     return this.http.get(`${this.openSearchUrl}/${params}`, {
@@ -31,11 +34,11 @@ export class FaqService {
     return this.http.put(this.resourceUrl, faq);
   }
 
-  delete(id: number): Observable<any> {
-    return this.http.delete(`${this.resourceUrl}/${id}`);
-  }
-
   findById(id: number): Observable<any> {
     return this.http.get(`${this.resourceUrl}/${id}`);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.resourceUrl}/${id}`);
   }
 }
