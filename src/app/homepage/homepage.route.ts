@@ -1,10 +1,10 @@
-import { Route } from "@angular/router";
-import { HomepageComponent } from "./homepage.component";
+import { Route } from '@angular/router';
+import { HomepageComponent } from './homepage.component';
 
 export const HomepageRoute: Route = {
-  path: "",
+  path: '',
   component: HomepageComponent,
   data: {
-    pageTitle: "Homepage",
+    pageTitle: 'Homepage',
   },
 };

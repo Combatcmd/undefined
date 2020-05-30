@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core'
-import { SearchService, UtilsService } from '../../shared'
-import * as moment from 'moment'
+import { Component, OnInit } from '@angular/core';
+import { SearchService, UtilsService } from '../../shared';
+import * as moment from 'moment';
 
 @Component({
-  selector: 'lots',
+  selector: 'app-lots',
   templateUrl: './lots.component.html',
 })
 export class LotsComponent implements OnInit {
-  result: any[] = []
+  result: any[] = [];
 
   constructor(
     public searchService: SearchService,
@@ -21,15 +21,15 @@ export class LotsComponent implements OnInit {
         page: 0,
       })
       .subscribe((response) => {
-        this.result = response
-      })
+        this.result = response;
+      });
   }
 
   getData() {
-    let data = {
+    const data = {
       tenderSubjectTypes: [],
-    }
-    data['lotStatuses'] = ['PUBLISHED']
-    return data
+    };
+    data['lotStatuses'] = ['PUBLISHED'];
+    return data;
   }
 }

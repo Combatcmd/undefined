@@ -1,55 +1,55 @@
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
-import { createRequestOption } from '../utils/request-util'
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { createRequestOption } from '../utils/request-util';
 
 export type InternalStateType = {
   [key: string]: any
-}
+};
 
 @Injectable()
 export class SearchService {
-  private resourceLotUrl = 'eprocsearch/api/external/lots'
-  private resourcePlanUrl = 'eprocsearch/api/external/plan-items'
-  private resourceAdvertUrl = 'eprocsearch/api/external/4dv3rts'
+  private resourceLotUrl = 'eprocsearch/api/external/lots';
+  private resourcePlanUrl = 'eprocsearch/api/external/plan-items';
+  private resourceAdvertUrl = 'eprocsearch/api/external/4dv3rts';
 
-  public _state: InternalStateType = {}
+  public _state: InternalStateType = {};
 
   constructor(private http: HttpClient) {}
 
   // already return a clone of the current state
   public get state() {
-    return this._state
+    return this._state;
   }
   // never allow mutation
   public set state(value) {
-    throw new Error('do not mutate the `.state` directly')
+    throw new Error('do not mutate the `.state` directly');
   }
 
   public get(prop?: any) {
     // use our state getter for the clone
-    const state = this.state
-    return state.hasOwnProperty(prop) ? state[prop] : state
+    const state = this.state;
+    return state.hasOwnProperty(prop) ? state[prop] : state;
   }
 
   private _clone(object: InternalStateType) {
     // simple object clone
-    return JSON.parse(JSON.stringify(object))
+    return JSON.parse(JSON.stringify(object));
   }
 
   public set(prop: string, value: any) {
     // internally mutate our state
-    return (this._state[prop] = value)
+    return (this._state[prop] = value);
   }
 
   getLotList(data: any, req): Observable<any> {
-    const options = createRequestOption(req)
+    const options = createRequestOption(req);
     return this.http.post(`${this.resourceLotUrl}/filter`, data, options).pipe(
       map((response) => {
-        return response
+        return response;
       })
-    )
+    );
   }
 
   //   getLotItem(id: number): Observable<any> {

@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import * as moment from "moment";
+import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 interface Params {
   name: string;
@@ -11,27 +11,27 @@ export class UtilsService {
   constructor() {}
 
   capitalize(s: string) {
-    return s ? s[0].toUpperCase() + s.slice(1) : "";
+    return s ? s[0].toUpperCase() + s.slice(1) : '';
   }
 
   createFieldWCurLang(key: string) {
     return (
       key +
       this.capitalize(
-        "ru"
+        'ru'
         // this.translateService.currentLang ? this.translateService.currentLang : 'ru'
       )
     );
   }
 
   dateFormat(date) {
-    return moment(date).format("YYYY-MM-DD");
+    return moment(date).format('YYYY-MM-DD');
   }
 
   createUrlParams(params: Params[]) {
-    let urlParam: any = "";
+    let urlParam: any = '';
     params.map((item: any) => {
-      let { name, value } = item;
+      const { name, value } = item;
       if (value !== undefined) {
         urlParam += `&${name}=${value}`;
       }

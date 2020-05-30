@@ -1,6 +1,6 @@
-import { BaseEntity } from "../../shared";
-import { RegDocument } from "./reg-document.model";
-import { Address } from "./address.model";
+import { BaseEntity } from '../../shared';
+import { RegDocument } from './reg-document.model';
+import { Address } from './address.model';
 
 export class CompanyInfo implements BaseEntity {
   constructor(

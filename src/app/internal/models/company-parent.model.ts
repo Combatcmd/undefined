@@ -1,5 +1,5 @@
-import { BaseEntity } from "../../shared";
-import { Company } from "../company/company.model";
+import { BaseEntity } from '../../shared';
+import { Company } from '../company/company.model';
 
 export class CompanyParent implements BaseEntity {
   constructor(

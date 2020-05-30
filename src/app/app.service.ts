@@ -1,22 +1,22 @@
-import { Injectable } from "@angular/core";
-import { Subject, Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 
 export type InternalStateType = {
   [key: string]: any;
 };
 
 type Key =
-  | "plan"
-  | "plans"
-  | "planItem"
-  | "planItems"
-  | "account"
-  | "dictionary"
-  | "advertLotNotifier"
-  | "loaders"
-  | "blocker"
-  | "eContractProject"
-  | "serverTime";
+  | 'plan'
+  | 'plans'
+  | 'planItem'
+  | 'planItems'
+  | 'account'
+  | 'dictionary'
+  | 'advertLotNotifier'
+  | 'loaders'
+  | 'blocker'
+  | 'eContractProject'
+  | 'serverTime';
 
 interface Model {
   account: Subject<any>;
@@ -48,7 +48,7 @@ export class AppState {
     blocker: new Subject<any>(),
   };
 
-  isMain: boolean = false;
+  isMain = false;
   public _state: InternalStateType = {};
 
   // already return a clone of the current state
@@ -57,7 +57,7 @@ export class AppState {
   }
   // never allow mutation
   public set state(value) {
-    throw new Error("do not mutate the `.state` directly");
+    throw new Error('do not mutate the `.state` directly');
   }
 
   public get(prop?: any) {

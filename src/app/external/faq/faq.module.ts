@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core'
-import { RouterModule } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../../shared'
+import { SharedModule } from '../../shared';
 
-import { FaqRoute } from './faq.route'
-import { FaqComponent } from './faq.component'
-import { FaqService } from './faq.service'
+import { FaqRoute } from './faq.route';
+import { FaqComponent } from './faq.component';
+import { FaqService } from './faq.service';
 
 @NgModule({
   imports: [SharedModule, RouterModule.forChild([FaqRoute])],

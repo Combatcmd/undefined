@@ -1,6 +1,6 @@
-import { BaseEntity } from "../../shared";
-import { Bank } from "../bank/bank.model";
-import { Entry } from "./entry.model";
+import { BaseEntity } from '../../shared';
+import { Bank } from '../bank/bank.model';
+import { Entry } from './entry.model';
 
 export class CompanyBankRequisite implements BaseEntity {
   constructor(

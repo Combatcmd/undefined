@@ -1,4 +1,4 @@
-import { BaseEntity, RequestFile } from "../../shared";
+import { BaseEntity, RequestFile } from '../../shared';
 
 export class CompanyFile extends RequestFile implements BaseEntity {
   constructor(
@@ -16,6 +16,6 @@ export class CompanyFile extends RequestFile implements BaseEntity {
     public company?: BaseEntity,
     public uploadProgress?: number
   ) {
-    super("Company", id);
+    super('Company', id);
   }
 }

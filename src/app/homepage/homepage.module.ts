@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { RouterModule } from '@angular/router'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../shared'
+import { SharedModule } from '../shared';
 
-import { HomepageRoute } from './homepage.route'
-import { HomepageComponent } from './homepage.component'
+import { HomepageRoute } from './homepage.route';
+import { HomepageComponent } from './homepage.component';
 
-import { LotsComponent } from './lots/lots.component'
+import { LotsComponent } from './lots/lots.component';
 
 @NgModule({
   imports: [

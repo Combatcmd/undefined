@@ -1,4 +1,4 @@
-import { BaseEntity } from "../../shared";
+import { BaseEntity } from '../../shared';
 import {
   CompanyInfo,
   CompanyParent,
@@ -7,8 +7,8 @@ import {
   CompanyFounder,
   CompanyFile,
   CompanyAttribute,
-} from "../models";
-import { CompanyRegRequest } from "../company-reg-request/company-reg-request.model";
+} from '../models';
+import { CompanyRegRequest } from '../company-reg-request/company-reg-request.model';
 
 export class Company implements BaseEntity {
   constructor(

@@ -1,23 +1,23 @@
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
-import { AccountService } from "./account.service";
-import { JhiTrackerService } from "../tracker/tracker.service"; // Barrel doesn't work here. No idea why!
-import { AppState } from "../../app.service";
-import { Company } from "../../internal/company/company.model";
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { AccountService } from './account.service';
+import { JhiTrackerService } from '../tracker/tracker.service'; // Barrel doesn't work here. No idea why!
+import { AppState } from '../../app.service';
+import { Company } from '../../internal/company/company.model';
 
 @Injectable()
 export class Principal {
   private userIdentity: any;
   private authenticated = false;
-  private companyRegistered: boolean = false;
+  private companyRegistered = false;
   private hasCompany = false;
-  private isCustomer: boolean = false;
-  private isSupplier: boolean = false;
-  private isAuditor: boolean = false;
-  private isPkoControl: boolean = false;
-  private isNpp: boolean = false;
-  private isBranch: boolean = false;
-  private isResident: boolean = false;
+  private isCustomer = false;
+  private isSupplier = false;
+  private isAuditor = false;
+  private isPkoControl = false;
+  private isNpp = false;
+  private isBranch = false;
+  private isResident = false;
   private authenticationState = new Subject<any>();
   private company: Company;
   private pkoDocuments: any;
@@ -48,8 +48,8 @@ export class Principal {
         if (account) {
           this.userIdentity = account;
           this.authenticated = true;
-          this.appState.set("account", account);
-          this.appState.setObservable("account", account);
+          this.appState.set('account', account);
+          this.appState.setObservable('account', account);
           this.companyRegistered = account.companyRegistered;
           this.hasCompany =
             account.company && account.company.id !== undefined

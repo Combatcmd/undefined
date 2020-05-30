@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'external-template',
+  selector: 'app-external-template',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.scss']
 })

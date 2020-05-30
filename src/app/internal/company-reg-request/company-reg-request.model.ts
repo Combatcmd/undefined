@@ -1,6 +1,6 @@
-import { BaseEntity } from "../../shared";
-import { CompanyRegRequestStatusHistory } from "../models";
-import { Company } from "../company/company.model";
+import { BaseEntity } from '../../shared';
+import { CompanyRegRequestStatusHistory } from '../models';
+import { Company } from '../company/company.model';
 
 export class CompanyRegRequest implements BaseEntity {
   constructor(
