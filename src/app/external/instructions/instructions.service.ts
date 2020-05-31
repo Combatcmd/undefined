@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { createRequestOption, UtilsService } from '../../shared';
 
 @Injectable()
-export class InformationService {
+export class InstructionsService {
   private resourceUrl = '/eprocglobal/api/instruction';
   private openSearchUrl = '/eprocsearch/open-api/instruction';
   private getNameAndCountUrl =

@@ -1,1 +1,334 @@
-<p>instructions works!</p>
+<div class="container">
+  <div class="row pv-3 breadcrumbs">
+    <a routerLink="/ext">Главная</a>
+    <span>Инструкции</span>
+  </div>
+  <div class="row title">Инструкции</div>
+  <div class="row">
+    <button
+      class="tabs__tab"
+      (click)="tabs = 'VIDEO'"
+      [ngClass]="{'tabs__tab--active': tabs === 'VIDEO'}"
+    >
+      Видеоинструкции
+    </button>
+    <button
+      class="tabs__tab"
+      (click)="tabs = 'REFERENCE'"
+      [ngClass]="{'tabs__tab--active': tabs === 'REFERENCE'}"
+    >
+      Руководство
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="row filter__title">Разделы</div>
+      <div
+        class="row filter__faq"
+        [ngClass]="{'filter--active': informationGroupCode === ''}"
+      >
+        <div (click)="informationGroupCode = ''; page=1; load();">Все</div>
+        <!-- <div>{{'('+totalFaqs()+')'}}</div> -->
+      </div>
+      <div
+        class="row filter__faq"
+        [ngClass]="{'filter--active': informationGroupCode === group.cnt}"
+        *ngFor="let group of informationGroups"
+      >
+        <div (click)="informationGroupCode = group.cnt; page=1; load();">
+          {{group.cnt | translate}}
+        </div>
+        <div>{{'('+group.code+')'}}</div>
+      </div>
+      <div class="row">
+        <button
+          class="button button--primary w-100 br4"
+          (click)="openModal(crud)"
+          *ngIf="isAdmin()"
+        >
+          Добавить
+        </button>
+      </div>
+    </div>
+    <div class="col-9 pl-5">
+      <div class="row">
+        <div class="filter__keyword">
+          <input
+            type="input"
+            [(ngModel)]="search"
+            name="searchText"
+            #searchText="ngModel"
+            (keyup.enter)="page=1; load();"
+          />
+          <button (click)="page=1; load();">
+            <div class="button__icon d-flex">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.7803 16.7196L14.5876 13.5266C15.7809 12.0953 16.5 10.2554 16.5 8.25057C16.5 3.70121 12.799 0 8.24999 0C3.70095 0 0 3.70116 0 8.25057C0 12.8 3.70095 16.5011 8.24999 16.5011C10.2553 16.5011 12.0957 15.7815 13.527 14.5875L16.7197 17.7803C16.8661 17.9268 17.0581 18 17.25 18C17.4419 18 17.6339 17.9268 17.7803 17.7803C18.0732 17.4874 18.0732 17.0125 17.7803 16.7196ZM1.8 8.25057C1.8 4.52836 4.52805 1.8001 8.24999 1.8001C11.9719 1.8001 14.7 4.52836 14.7 8.25057C14.7 11.9728 11.9719 14.701 8.24999 14.701C4.52805 14.701 1.8 11.9728 1.8 8.25057Z"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="instructions__container" *ngIf="tabs === 'VIDEO'">
+          <div
+            class="instructions__video"
+            (click)="openContentModal(content, item)"
+            *ngFor="let item of informationList"
+          >
+            <button class="button button--info">
+              <div class="button__icon">
+                <svg
+                  width="56"
+                  height="56"
+                  viewBox="0 0 56 56"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="28" cy="28" r="28" fill="#56BE89" />
+                  <path
+                    d="M35.7 27.8268C35.8333 27.9038 35.8333 28.0962 35.7 28.1732L24.3 34.755C24.1667 34.832 24 34.7358 24 34.5818L24 21.4182C24 21.2642 24.1667 21.168 24.3 21.245L35.7 27.8268Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <p>{{item?.nameRu}}</p>
+            </button>
+            <div class="instructions__action-buttons" *ngIf="isAdmin()">
+              <button class="mr-2" (click)="delete(item.id, $event)">
+                <svg
+                  width="12"
+                  height="14"
+                  viewBox="0 0 12 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M5.36219 0.191666C4.21678 0.191666 3.32837 1.09845 3.23833 2.19207H1.51804H0.877344C0.407902 2.19207 0.0273438 2.57262 0.0273438 3.04207C0.0273438 3.51151 0.407902 3.89207 0.877344 3.89207H1.46001L1.97359 11.8386L1.9737 11.8405C2.03903 12.9126 2.90289 13.7941 4.00113 13.7941H8.00045C9.09869 13.7941 9.96255 12.9126 10.0279 11.8405L10.028 11.8386L10.5416 3.89207H11.1284C11.5979 3.89207 11.9784 3.51151 11.9784 3.04207C11.9784 2.57262 11.5979 2.19207 11.1284 2.19207H10.4877H8.76743C8.67739 1.09845 7.78898 0.191666 6.64357 0.191666H5.36219ZM7.0438 2.19207H4.96196C5.03068 2.00254 5.20192 1.89167 5.36219 1.89167H6.64357C6.80383 1.89167 6.97508 2.00254 7.0438 2.19207ZM5.37571 5.67429C5.3564 5.20525 4.9605 4.84067 4.49146 4.85999C4.02242 4.8793 3.65784 5.27519 3.67715 5.74424L3.86936 10.4118C3.88867 10.8809 4.28457 11.2455 4.75361 11.2261C5.22266 11.2068 5.58724 10.8109 5.56792 10.3419L5.37571 5.67429ZM8.3229 5.74424C8.34221 5.27519 7.97763 4.8793 7.50859 4.85999C7.03954 4.84067 6.64365 5.20525 6.62434 5.67429L6.43213 10.3419C6.41281 10.8109 6.77739 11.2068 7.24644 11.2261C7.71548 11.2455 8.11137 10.8809 8.13069 10.4118L8.3229 5.74424Z"
+                    fill="#F44336"
+                  />
+                </svg>
+              </button>
+              <button type="button" (click)="openModal(crud, item.id, $event)">
+                <svg
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  class="icon__svg"
+                  version="1.1"
+                  viewBox="0 0 512 512"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
+                >
+                  <path
+                    d="M133.3 452.3l28.2-28.2-72.9-72.9-28.2 28.2v33.2h39.7v39.7h33.2zm162.3-287.9c0-4.6-2.3-6.8-6.8-6.8-2.1 0-3.8.7-5.3 2.2l-168.2 168.1c-1.4 1.4-2.2 3.2-2.2 5.3 0 4.6 2.3 6.8 6.8 6.8 2.1 0 3.8-.7 5.3-2.2l168.1-168.1c1.5-1.5 2.3-3.2 2.3-5.3zm-16.8-59.6l129.1 129.1-258.1 258.1h-129.1v-129.1l258.1-258.1zm211.9 29.8c0 11-3.8 20.3-11.5 27.9l-51.5 51.5-129-129 51.5-51.2c7.4-7.9 16.8-11.8 27.9-11.8 11 0 20.4 3.9 28.2 11.8l72.9 72.6c7.7 8.1 11.5 17.5 11.5 28.2z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="instructions__container" *ngIf="tabs === 'REFERENCE'">
+          <!-- <div class="instructions__help">
+              <div class="instructions__icon">
+                pdf
+              </div>
+              <p>Руководство пользователя по регистрации</p>
+            </div>
+            <div class="instructions__help">
+              <div class="instructions__icon">
+                pdf
+              </div>
+              <p>Руководство пользователя по регистрация не резидентов</p>
+            </div>
+            <div class="instructions__help">
+              <div class="instructions__icon">
+                pdf
+              </div>
+              <p>Руководство пользователя по регистрации</p>
+            </div>
+            <div class="instructions__help">
+              <div class="instructions__icon">
+                pdf
+              </div>
+              <p>Руководство пользователя по регистрация не резидентов</p>
+            </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-d="dismiss">
+  <div class="modal__header">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal__body">
+    <iframe
+      width="800"
+      height="452"
+      [src]="item.link | safe"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</ng-template>
+
+<ng-template #crud>
+  <div class="crud-dialog__header">
+    <h4 *ngIf="!information.id && tabs === 'VIDEO'" class="crud-dialog__title">
+      Добавить видеоинструкцию
+    </h4>
+    <h4
+      *ngIf="!information.id && tabs === 'REFERENCE'"
+      class="crud-dialog__title"
+    >
+      Добавить справку
+    </h4>
+    <h4 *ngIf="information.id && tabs === 'VIDEO'" class="crud-dialog__title">
+      Редактировать видеоинструкцию
+    </h4>
+    <h4
+      *ngIf="information.id && tabs === 'REFERENCE'"
+      class="crud-dialog__title"
+    >
+      Редактировать справку
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="closeModal()"
+    >
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 26 26"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.65685 7.65687L13.3137 13.3137M18.9706 18.9706L13.3137 13.3137M13.3137 13.3137L18.9706 7.65687M13.3137 13.3137L7.65685 18.9706"
+          stroke="#262F56"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+  <div class="crud-dialog__body">
+    <form
+      name="crudForm"
+      role="form"
+      (ngSubmit)="createUpdate()"
+      novalidate
+      #crudForm="ngForm"
+    >
+      <div>
+        <div class="mb-3">
+          <label class="crud-dialog__label" for="informationGroupsList"
+            >Группа инструкций*</label
+          >
+          <select
+            name="informationGroupsList"
+            [(ngModel)]="information.instructionGroup"
+            #informationGroupsList="ngModel"
+            class="crud-dialog__input crud-dialog__input--select"
+          >
+            <option [value]="undefined" disabled selected
+              >Выберите группу</option
+            >
+            <option
+              *ngFor="let group of informationGroups"
+              [ngValue]="group.cnt"
+              [title]="group.cnt | translate"
+            >
+              {{group.cnt | translate}}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="crud-dialog__label" for="nameRu"
+            >Название на русском*</label
+          >
+          <input
+            [(ngModel)]="information.nameRu"
+            [title]="'information.nameRu'|translate"
+            [required]="true"
+            name="nameRu"
+            #nameRu="ngModel"
+            placeholder="Введите название"
+            class="crud-dialog__input"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="crud-dialog__label" for="nameRu"
+            >Название на казахском*</label
+          >
+          <input
+            [(ngModel)]="information.nameKk"
+            [title]="'information.nameKk'|translate"
+            [required]="true"
+            name="nameKk"
+            #nameKk="ngModel"
+            placeholder="Введите название"
+            class="crud-dialog__input"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="crud-dialog__label" for="linkToVideo"
+            >Ссылка на видеоинструкцию*</label
+          >
+          <input
+            [(ngModel)]="information.link"
+            [title]="'information.link'|translate"
+            [required]="true"
+            name="linkToVideo"
+            #linkToVideo="ngModel"
+            placeholder="Введите ссылку"
+            class="crud-dialog__input"
+          />
+        </div>
+        <div class="mb-3 d-flex flex-column">
+          <label class="crud-dialog__label" for="onlyAuthUser"
+            >Только для авторизованных пользователей*</label
+          >
+          <input
+            type="checkbox"
+            [(ngModel)]="information.onlyAuthUser"
+            [title]="'Только для авторизованных пользователей'"
+            [required]="true"
+            name="onlyAuthUser"
+            #onlyAuthUser="ngModel"
+            class="crud-dialog__input crud-dialog__input--checkbox"
+          />
+        </div>
+      </div>
+      <div class="content__layout">
+        <button
+          type="submit"
+          class="button button--primary m-auto"
+          [disabled]="crudForm.form.invalid"
+        >
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

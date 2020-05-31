@@ -1,0 +1,26 @@
+@include b(tabs) {
+  @include e(tab) {
+    padding: 15px 0;
+    border: 0;
+    background: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #31335d;
+    border-bottom: 2px solid transparent;
+    &,
+    &:focus {
+      outline: none;
+    }
+    &:first-child {
+      margin-right: 28px;
+    }
+    &:hover {
+      color: #56be89;
+    }
+    @include m(active) {
+      color: #56be89;
+      border-color: #56be89;
+    }
+  }
+}

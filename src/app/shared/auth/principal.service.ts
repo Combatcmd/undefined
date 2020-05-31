@@ -98,4 +98,14 @@ export class Principal {
         return null;
       });
   }
+
+  authenticate(identity) {
+    this.userIdentity = identity;
+    this.authenticated = identity !== null;
+    this.authenticationState.next(this.userIdentity);
+  }
+
+  isAuthenticated(): boolean {
+    return this.authenticated;
+  }
 }

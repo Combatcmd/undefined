@@ -5,7 +5,7 @@ import { SearchService } from '../shared';
 
 @Component({
   selector: 'app-homepage',
-  templateUrl: './homepage.component.html'
+  templateUrl: './homepage.component.html',
 })
 export class HomepageComponent implements OnInit {
   keyword: string;
@@ -28,8 +28,8 @@ export class HomepageComponent implements OnInit {
 
   openModal(content) {
     this.modalRef = this.modal.open(content, {
+      backdrop: 'static',
       windowClass: 'modal__instructions',
-      size: 'lg',
     });
   }
 }

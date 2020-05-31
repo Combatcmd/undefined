@@ -1,0 +1,161 @@
+@include b(instructions) {
+  @include e(container) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+  }
+  @include e(video) {
+    margin-bottom: 15px;
+    cursor: pointer;
+    height: 130px;
+    width: calc(50% - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 31px;
+    transition: 0.3s ease;
+    background: linear-gradient(
+      180deg,
+      $element-bg-primary2 0%,
+      $element-bg-primary2 100%
+    );
+    position: relative;
+    z-index: 10;
+    &:before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      background: linear-gradient(180deg, #31335d 0%, #1a284f 100%);
+      transition: opacity 0.3s;
+      z-index: -10;
+    }
+    &:hover {
+      box-shadow: 0px 24px 42px rgba(57, 78, 90, 0.14);
+      &:before {
+        opacity: 1;
+      }
+      .button {
+        circle {
+          fill: #fff;
+        }
+        path {
+          fill: #56be89;
+        }
+      }
+      p {
+        color: #fff;
+      }
+    }
+    .button {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border: 0;
+      circle {
+        fill: #56be89;
+        transition: 0.3s ease;
+      }
+      path {
+        fill: #fff;
+        transition: 0.3s ease;
+      }
+    }
+    p {
+      font-weight: 500;
+      color: #000;
+      font-size: 16px;
+      line-height: 22px;
+      padding-left: 10px;
+      text-align: left;
+      transition: 0.3s;
+      margin-bottom: 0;
+    }
+  }
+  @include e(help) {
+    margin-bottom: 15px;
+    cursor: pointer;
+    height: 50px;
+    width: calc(50% - 10px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 4px;
+    padding: 14px;
+    transition: 0.3s ease;
+    background: linear-gradient(
+      180deg,
+      $element-bg-primary2 0%,
+      $element-bg-primary2 100%
+    );
+    position: relative;
+    z-index: 10;
+    $this: &;
+    &:before {
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      background: linear-gradient(180deg, #31335d 0%, #1a284f 100%);
+      transition: opacity 0.3s;
+      z-index: -10;
+    }
+    &:hover {
+      box-shadow: 0px 24px 42px rgba(57, 78, 90, 0.14);
+      &:before {
+        opacity: 1;
+      }
+      p {
+        color: #fff;
+      }
+      #{$this}--icon {
+        background: white;
+        color: #56be89;
+      }
+    }
+    p {
+      font-size: 12px;
+      line-height: 12px;
+      color: $text-color-primary;
+      margin: 0;
+      transition: 0.3s;
+    }
+  }
+  @include e(icon) {
+    background: #56be89;
+    border-radius: 4px;
+    padding: 6px 12px;
+    color: #fff;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    margin-right: 10px;
+  }
+  @include e(action-buttons) {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    top: 10px;
+    right: 10px;
+    button {
+      background-color: transparent;
+      border: 0;
+      outline: none;
+    }
+  }
+}

@@ -8,6 +8,7 @@
       justify-content: center;
       margin: 0 auto;
       box-shadow: none;
+      max-width: 800px;
       .modal-content {
         min-height: 400px;
         background: transparent;
@@ -15,6 +16,7 @@
         @include b(modal) {
           @include e(header) {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px 0 !important;
