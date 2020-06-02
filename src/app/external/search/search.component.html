@@ -1,0 +1,408 @@
+<div class="container">
+  <div class="row pv-3 breadcrumbs">
+    <a routerLink="/ext">Главная</a>
+    <span *ngIf="tabs === 'plan'">Планы</span>
+    <span *ngIf="tabs === 'advert'">Закупки</span>
+    <span *ngIf="tabs === 'lot'">Лоты</span>
+  </div>
+  <div class="row title" *ngIf="tabs === 'plan'">Планы</div>
+  <div class="row title" *ngIf="tabs === 'advert'">Закупки</div>
+  <div class="row title" *ngIf="tabs === 'lot'">Лоты</div>
+  <div class="row search__content">
+    <div class="col-3">
+      <form name="filterForm" (ngSubmit)="find()">
+        <div class="row filter filter--title">
+          <div class="button__icon">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.25 6.85C14.7194 6.85 15.1 6.46944 15.1 6C15.1 5.53056 14.7194 5.15 14.25 5.15V6.85ZM8.25 5.15C7.78056 5.15 7.4 5.53056 7.4 6C7.4 6.46944 7.78056 6.85 8.25 6.85V5.15ZM14.25 5.15H8.25V6.85H14.25V5.15Z"
+                fill="#31335D"
+              />
+              <path
+                d="M9.75 12.85C10.2194 12.85 10.6 12.4694 10.6 12C10.6 11.5306 10.2194 11.15 9.75 11.15V12.85ZM3.75 11.15C3.28056 11.15 2.9 11.5306 2.9 12C2.9 12.4694 3.28056 12.85 3.75 12.85V11.15ZM9.75 11.15H3.75V12.85H9.75V11.15Z"
+                fill="#31335D"
+              />
+              <circle
+                cx="5.25"
+                cy="6"
+                r="2.625"
+                stroke="#31335D"
+                stroke-width="1.7"
+              />
+              <circle
+                cx="12.75"
+                cy="12"
+                r="2.625"
+                stroke="#31335D"
+                stroke-width="1.7"
+              />
+            </svg>
+          </div>
+          Параметры поиска
+        </div>
+        <div class="row filter">
+          <label for=""></label>
+          <div class="filter__layout">
+            <app-kato></app-kato>
+          </div>
+        </div>
+
+        <!-- <div class="row filter">
+          <label>Регион</label>
+          <div class="filter__layout">
+            <span class="filter__icon filter__icon--location">
+              <svg
+                width="14"
+                height="17"
+                viewBox="0 0 14 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13 6.83333C13 10.8952 9.04025 14.4071 7.55438 15.582C7.22684 15.841 6.77316 15.841 6.44562 15.582C4.95975 14.4072 1 10.8952 1 6.83333C1 3.61167 3.68629 1 7 1C10.3137 1 13 3.61167 13 6.83333Z"
+                  stroke="black"
+                  stroke-width="1.7"
+                />
+                <ellipse
+                  cx="7.00014"
+                  cy="6.83333"
+                  rx="2.57143"
+                  ry="2.5"
+                  stroke="black"
+                  stroke-width="1.7"
+                />
+              </svg>
+            </span>
+            <sk-kato
+              [(ngModel)]="deliveryKatoCode"
+              name="deliveryKatoCodes"
+              #deliveryKatoCodes="ngModel"
+              (ngModelChange)="setEntry($event)"
+              [openApi]="true"
+              placeholder="Весь Казахстан"
+              [isExtFilter]="true"
+            >
+            </sk-kato>
+            <i
+              class="fa fa-chevron-down filter__icon filter__icon--close"
+              aria-hidden="true"
+              *ngIf="!deliveryKatoCodeList || deliveryKatoCodeList.length === 0"
+            ></i>
+            <i
+              class="fa fa-times filter__icon filter__icon--close"
+              (click)="deliveryKatoCode = null; deliveryKatoCodeList = []"
+              aria-hidden="true"
+              *ngIf="deliveryKatoCodeList.length > 0"
+            ></i>
+          </div>
+        </div>
+        <div class="row filter">
+          <label>Заказчик</label>
+          <div class="filter__layout">
+            <sk-completer-remote
+              [(ngModel)]="customer"
+              [result]="customers"
+              name="customerName"
+              #customerName="ngModel"
+              (search)="searchCompanies(customer, 'customer')"
+              [autofocus]="false"
+              (setObj)="setCustomer($event)"
+              [keys]="[utils.createFieldWCurLang('name')]"
+              placeholder="Введите наименование"
+            >
+            </sk-completer-remote>
+            <span class="filter__icon filter__icon--search">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.8047 14.8618L12.9667 12.0236C14.0275 10.7514 14.6667 9.11592 14.6667 7.33384C14.6667 3.28996 11.3769 0 7.33333 0C3.28973 0 0 3.28992 0 7.33384C0 11.3778 3.28973 14.6677 7.33333 14.6677C9.11586 14.6677 10.7517 14.028 12.024 12.9666L14.8619 15.8047C14.9921 15.9349 15.1627 16 15.3333 16C15.5039 16 15.6746 15.9349 15.8047 15.8047C16.0651 15.5443 16.0651 15.1222 15.8047 14.8618ZM1.6 7.33384C1.6 4.02521 4.02493 1.60009 7.33333 1.60009C10.6417 1.60009 13.0667 4.02521 13.0667 7.33384C13.0667 10.6425 10.6417 13.0676 7.33333 13.0676C4.02493 13.0676 1.6 10.6425 1.6 7.33384Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="row filter" *ngIf="tabs !== 'lot'">
+          <label>Организатор</label>
+          <div class="filter__layout">
+            <sk-completer-remote
+              [(ngModel)]="organizer"
+              [result]="organizers"
+              name="organizerName"
+              #organizerName="ngModel"
+              (search)="searchCompanies(organizer, 'organizer')"
+              [autofocus]="false"
+              (setObj)="setOrganizer($event)"
+              [keys]="[utils.createFieldWCurLang('name')]"
+              placeholder="Введите наименование"
+            >
+            </sk-completer-remote>
+            <span class="filter__icon filter__icon--search">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.8047 14.8618L12.9667 12.0236C14.0275 10.7514 14.6667 9.11592 14.6667 7.33384C14.6667 3.28996 11.3769 0 7.33333 0C3.28973 0 0 3.28992 0 7.33384C0 11.3778 3.28973 14.6677 7.33333 14.6677C9.11586 14.6677 10.7517 14.028 12.024 12.9666L14.8619 15.8047C14.9921 15.9349 15.1627 16 15.3333 16C15.5039 16 15.6746 15.9349 15.8047 15.8047C16.0651 15.5443 16.0651 15.1222 15.8047 14.8618ZM1.6 7.33384C1.6 4.02521 4.02493 1.60009 7.33333 1.60009C10.6417 1.60009 13.0667 4.02521 13.0667 7.33384C13.0667 10.6425 10.6417 13.0676 7.33333 13.0676C4.02493 13.0676 1.6 10.6425 1.6 7.33384Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="row filter">
+          <label>Способ закупки</label>
+          <div class="filter__layout">
+            <z-multiselect-dropdown
+              #pmetod
+              item-id="pmetod"
+              class="multiselect"
+              [options]="tenderTypes"
+              (change)="pMethod=$event"
+            ></z-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row filter" *ngIf="tabs === 'advert'">
+          <label>Статус закупки</label>
+          <div class="filter__layout">
+            <z-multiselect-dropdown
+              #advertStatus
+              item-id="advert-status"
+              class="multiselect"
+              [options]="advertStatusArray"
+              (change)="advertStatuses=$event"
+            ></z-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row filter" *ngIf="tabs === 'plan'">
+          <label>Тип плана</label>
+          <div class="filter__layout">
+            <z-multiselect-dropdown
+              #planType
+              item-id="plan-type"
+              class="multiselect"
+              [options]="planTypeListArray"
+              (change)="planTypeList=$event"
+            ></z-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row filter" *ngIf="tabs === 'plan'">
+          <label>Вид плана</label>
+          <div class="filter__layout">
+            <z-multiselect-dropdown
+              #planDurationType
+              item-id="plan-duration-type"
+              class="multiselect"
+              [options]="planDurationTypeListArray"
+              (change)="planDurationTypeList=$event"
+            ></z-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row filter" *ngIf="tabs === 'plan'">
+          <label>Год плана</label>
+          <div class="filter__layout">
+            <z-multiselect-dropdown
+              #jhiYear
+              item-id="jhi-year"
+              class="multiselect"
+              [options]="jhiYearListArray"
+              (change)="jhiYearList=$event"
+            ></z-multiselect-dropdown>
+          </div>
+        </div>
+        <div class="row filter" *ngIf="tabs === 'plan'">
+          <label>Месяц проведения закупки</label>
+          <div class="filter__layout">
+            <sk-datepicker
+              [pickerType]="'month'"
+              [(ngModel)]="durationMonth"
+              name="durationMonthName"
+              #durationMonthName="ngModel"
+            >
+            </sk-datepicker>
+          </div>
+        </div>
+        <div class="row filter align-items-center" *ngIf="tabs !== 'plan'">
+          <label>Приём заявок</label>
+          <div class="filter__layout filter__layout--half">
+            <sk-datepicker
+              [(ngModel)]="beginAcceptanceBeginTime"
+              name="beginAcceptanceBeginTimeName"
+              #beginAcceptanceBeginTimeName="ngModel"
+              placeholder="ДД.ММ.ГГГГ"
+            >
+            </sk-datepicker>
+            <span
+              *ngIf="!beginAcceptanceBeginTime"
+              class="filter__icon filter__icon--date"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.24883 0.6C5.24883 0.268629 4.9802 0 4.64883 0C4.31746 0 4.04883 0.268629 4.04883 0.6V1.58942H2.6752C1.23925 1.58942 0.0751953 2.75348 0.0751953 4.18942V12.9048C0.0751953 14.3407 1.23926 15.5048 2.6752 15.5048H12.98C14.4159 15.5048 15.58 14.3407 15.58 12.9048V4.18942C15.58 2.75347 14.4159 1.58942 12.98 1.58942H11.6063V0.6C11.6063 0.268629 11.3376 0 11.0063 0C10.6749 0 10.4062 0.268629 10.4062 0.6V1.58942H5.24883V0.6ZM10.4062 3.77884V2.78942H5.24883V3.77884C5.24883 4.11021 4.9802 4.37884 4.64883 4.37884C4.31746 4.37884 4.04883 4.11021 4.04883 3.77884V2.78942H2.6752C1.902 2.78942 1.2752 3.41622 1.2752 4.18942V5.56297H14.38V4.18942C14.38 3.41622 13.7532 2.78942 12.98 2.78942H11.6063V3.77884C11.6063 4.11021 11.3376 4.37884 11.0063 4.37884C10.6749 4.37884 10.4062 4.11021 10.4062 3.77884ZM14.38 6.76297H1.2752V12.9048C1.2752 13.678 1.902 14.3048 2.6752 14.3048H12.98C13.7532 14.3048 14.38 13.678 14.38 12.9048V6.76297ZM5.04587 8.94444C5.04587 9.38335 4.69006 9.73915 4.25116 9.73915C3.81225 9.73915 3.45645 9.38335 3.45645 8.94444C3.45645 8.50554 3.81225 8.14973 4.25116 8.14973C4.69006 8.14973 5.04587 8.50554 5.04587 8.94444ZM7.82733 9.73915C8.26623 9.73915 8.62204 9.38335 8.62204 8.94444C8.62204 8.50554 8.26623 8.14973 7.82733 8.14973C7.38842 8.14973 7.03262 8.50554 7.03262 8.94444C7.03262 9.38335 7.38842 9.73915 7.82733 9.73915ZM12.1982 8.94444C12.1982 9.38335 11.8424 9.73915 11.4035 9.73915C10.9646 9.73915 10.6088 9.38335 10.6088 8.94444C10.6088 8.50554 10.9646 8.14973 11.4035 8.14973C11.8424 8.14973 12.1982 8.50554 12.1982 8.94444ZM4.25116 12.5207C4.69006 12.5207 5.04587 12.1649 5.04587 11.726C5.04587 11.287 4.69006 10.9312 4.25116 10.9312C3.81225 10.9312 3.45645 11.287 3.45645 11.726C3.45645 12.1649 3.81225 12.5207 4.25116 12.5207ZM8.62204 11.726C8.62204 12.1649 8.26623 12.5207 7.82733 12.5207C7.38842 12.5207 7.03262 12.1649 7.03262 11.726C7.03262 11.287 7.38842 10.9312 7.82733 10.9312C8.26623 10.9312 8.62204 11.287 8.62204 11.726ZM11.4035 12.5207C11.8424 12.5207 12.1982 12.1649 12.1982 11.726C12.1982 11.287 11.8424 10.9312 11.4035 10.9312C10.9646 10.9312 10.6088 11.287 10.6088 11.726C10.6088 12.1649 10.9646 12.5207 11.4035 12.5207Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="filter__divider"></div>
+          <div class="filter__layout filter__layout--half">
+            <sk-datepicker
+              [(ngModel)]="endAcceptanceEndTime"
+              name="endAcceptanceEndTimeName"
+              #endAcceptanceEndTimeName="ngModel"
+              placeholder="ДД.ММ.ГГГГ"
+            >
+            </sk-datepicker>
+            <span
+              *ngIf="!endAcceptanceEndTime"
+              class="filter__icon filter__icon--date"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5.24883 0.6C5.24883 0.268629 4.9802 0 4.64883 0C4.31746 0 4.04883 0.268629 4.04883 0.6V1.58942H2.6752C1.23925 1.58942 0.0751953 2.75348 0.0751953 4.18942V12.9048C0.0751953 14.3407 1.23926 15.5048 2.6752 15.5048H12.98C14.4159 15.5048 15.58 14.3407 15.58 12.9048V4.18942C15.58 2.75347 14.4159 1.58942 12.98 1.58942H11.6063V0.6C11.6063 0.268629 11.3376 0 11.0063 0C10.6749 0 10.4062 0.268629 10.4062 0.6V1.58942H5.24883V0.6ZM10.4062 3.77884V2.78942H5.24883V3.77884C5.24883 4.11021 4.9802 4.37884 4.64883 4.37884C4.31746 4.37884 4.04883 4.11021 4.04883 3.77884V2.78942H2.6752C1.902 2.78942 1.2752 3.41622 1.2752 4.18942V5.56297H14.38V4.18942C14.38 3.41622 13.7532 2.78942 12.98 2.78942H11.6063V3.77884C11.6063 4.11021 11.3376 4.37884 11.0063 4.37884C10.6749 4.37884 10.4062 4.11021 10.4062 3.77884ZM14.38 6.76297H1.2752V12.9048C1.2752 13.678 1.902 14.3048 2.6752 14.3048H12.98C13.7532 14.3048 14.38 13.678 14.38 12.9048V6.76297ZM5.04587 8.94444C5.04587 9.38335 4.69006 9.73915 4.25116 9.73915C3.81225 9.73915 3.45645 9.38335 3.45645 8.94444C3.45645 8.50554 3.81225 8.14973 4.25116 8.14973C4.69006 8.14973 5.04587 8.50554 5.04587 8.94444ZM7.82733 9.73915C8.26623 9.73915 8.62204 9.38335 8.62204 8.94444C8.62204 8.50554 8.26623 8.14973 7.82733 8.14973C7.38842 8.14973 7.03262 8.50554 7.03262 8.94444C7.03262 9.38335 7.38842 9.73915 7.82733 9.73915ZM12.1982 8.94444C12.1982 9.38335 11.8424 9.73915 11.4035 9.73915C10.9646 9.73915 10.6088 9.38335 10.6088 8.94444C10.6088 8.50554 10.9646 8.14973 11.4035 8.14973C11.8424 8.14973 12.1982 8.50554 12.1982 8.94444ZM4.25116 12.5207C4.69006 12.5207 5.04587 12.1649 5.04587 11.726C5.04587 11.287 4.69006 10.9312 4.25116 10.9312C3.81225 10.9312 3.45645 11.287 3.45645 11.726C3.45645 12.1649 3.81225 12.5207 4.25116 12.5207ZM8.62204 11.726C8.62204 12.1649 8.26623 12.5207 7.82733 12.5207C7.38842 12.5207 7.03262 12.1649 7.03262 11.726C7.03262 11.287 7.38842 10.9312 7.82733 10.9312C8.26623 10.9312 8.62204 11.287 8.62204 11.726ZM11.4035 12.5207C11.8424 12.5207 12.1982 12.1649 12.1982 11.726C12.1982 11.287 11.8424 10.9312 11.4035 10.9312C10.9646 10.9312 10.6088 11.287 10.6088 11.726C10.6088 12.1649 10.9646 12.5207 11.4035 12.5207Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="row filter align-items-center">
+          <label>Сумма</label>
+          <div class="filter__layout filter__layout--half m-number-spin">
+            <input
+              class="m-input"
+              type="number"
+              [(ngModel)]="priceFrom"
+              name="priceFromName"
+              #priceFromName="ngModel"
+              [placeholder]="'search.from'|tr"
+            />
+          </div>
+          <div class="filter__divider"></div>
+          <div class="filter__layout filter__layout--half m-number-spin">
+            <input
+              class="m-input"
+              type="number"
+              [(ngModel)]="priceTo"
+              name="priceToName"
+              #priceToName="ngModel"
+              [placeholder]="'search.priceTo'|tr"
+            />
+          </div>
+        </div>
+        <div
+          class="row filter d-flex justify-content-between"
+          *ngIf="tabs !== 'advert'"
+        >
+          <div class="pr-1">
+            <input
+              class="filter__checkbox"
+              type="checkbox"
+              [(ngModel)]="goods"
+              [placeholder]="'search.goods'|tr"
+              id="goodsName"
+              name="goodsName"
+              #goodsName="ngModel"
+            />
+            <label for="goodsName">
+              <div></div>
+              {{ 'main.goods' | tr}}
+            </label>
+          </div>
+          <div class="pr-1">
+            <input
+              class="filter__checkbox"
+              type="checkbox"
+              [(ngModel)]="services"
+              [placeholder]="'search.services'|tr"
+              id="servicesName"
+              name="servicesName"
+              #servicesName="ngModel"
+            />
+            <label for="servicesName">
+              <div></div>
+              {{ 'main.services' | tr}}
+            </label>
+          </div>
+          <div class="pr-1">
+            <input
+              class="filter__checkbox"
+              type="checkbox"
+              [(ngModel)]="works"
+              [placeholder]="'search.works'|tr"
+              id="worksName"
+              name="worksName"
+              #worksName="ngModel"
+            />
+            <label for="worksName">
+              <div></div>
+              {{ 'main.works' | tr}}
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="button button--primary w-100" type="submit">
+            Применить
+          </button>
+        </div>
+        <div class="row">
+          <button
+            class="button button--transparent w-100 filter--clear"
+            (click)="clearFilter()"
+          >
+            <div class="button__icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.12132 5.60658L10.2426 9.72791M10.2426 9.72791L14.364 5.60658M10.2426 9.72791L6.12132 13.8492M10.2426 9.72791L14.364 13.8492"
+                  stroke="#484B80"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            Очистить форму
+          </button>
+        </div> -->
+      </form>
+    </div>
+    <div class="col-9 pl-5">
+      <!-- <sk-search-result><router-outlet></router-outlet></sk-search-result> -->
+    </div>
+  </div>
+</div>

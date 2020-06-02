@@ -1,10 +1,12 @@
 export * from './services/search.service';
+export * from './services/entry.service';
 
 export * from './utils/request-util';
 export * from './utils/utils.service';
 
 export * from './models/response-wrapper.model';
 export * from './models/base-entity';
+export * from './models/entry.model';
 
 export * from './isep/request-file';
 

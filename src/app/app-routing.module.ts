@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ExternalTemplateComponent } from './layouts/external/template/template.component';
 
 import { HomepageRoute } from './homepage';
-import { FaqRoute, InstructionsRoute } from './external';
+import { FaqRoute, InstructionsRoute, SearchRoute } from './external';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ext', pathMatch: 'full' },
@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: '', children: [HomepageRoute] },
       { path: '', children: [FaqRoute] },
       { path: '', children: [InstructionsRoute] },
+      { path: '', children: [SearchRoute] },
 
       { path: '**', redirectTo: '/ext', pathMatch: 'full' }
     ],

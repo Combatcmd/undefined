@@ -1,0 +1,47 @@
+<div class="kato__container">
+  <div class="kato__header" (click)="toggle()">
+    <span>
+      <svg
+        width="14"
+        height="17"
+        viewBox="0 0 14 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M13 6.83333C13 10.8952 9.04025 14.4071 7.55438 15.582C7.22684 15.841 6.77316 15.841 6.44562 15.582C4.95975 14.4072 1 10.8952 1 6.83333C1 3.61167 3.68629 1 7 1C10.3137 1 13 3.61167 13 6.83333Z"
+          stroke="black"
+          stroke-width="1.7"
+        />
+        <ellipse
+          cx="7.00014"
+          cy="6.83333"
+          rx="2.57143"
+          ry="2.5"
+          stroke="black"
+          stroke-width="1.7"
+        />
+      </svg>
+    </span>
+    <p>Весь Казахстан</p>
+    <fa-icon [icon]="['fas', 'coffee']"></fa-icon>
+  </div>
+  <div class="kato__inner-container" [ngClass]="{'kato__inner-container--expanded': expanded}">
+    <div class="kato__input">
+      <input type="text" />
+    </div>
+    <div class="kato__list">
+      <ul>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+        <li>Весь Казахстан</li>
+      </ul>
+    </div>
+  </div>
+</div>

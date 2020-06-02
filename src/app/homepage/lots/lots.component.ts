@@ -21,7 +21,7 @@ export class LotsComponent implements OnInit {
         page: 0,
       })
       .subscribe((response) => {
-        this.result = response;
+        this.result = response.body;
       });
   }
 

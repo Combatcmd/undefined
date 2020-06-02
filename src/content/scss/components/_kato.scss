@@ -1,0 +1,35 @@
+@include b(kato) {
+  @include e(container) {
+    padding: 0 14px;
+    background: #ffffff;
+    border: 1px solid #d8d8e9;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  @include e(header) {
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    span {
+      margin-right: 10px;
+    }
+    p {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: #000000;
+      margin: 0;
+    }
+  }
+  @include e(inner-container) {
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    @include m(expanded) {
+      max-height: 500px;
+      transition: max-height 0.3s ease-in;
+    }
+  }
+}

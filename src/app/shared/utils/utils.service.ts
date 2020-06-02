@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+import { Injectable } from '@angular/core'
+import * as moment from 'moment'
 
 interface Params {
-  name: string;
-  value: string | number;
+  name: string
+  value: string | number
 }
 
 @Injectable()
@@ -11,7 +11,7 @@ export class UtilsService {
   constructor() {}
 
   capitalize(s: string) {
-    return s ? s[0].toUpperCase() + s.slice(1) : '';
+    return s ? s[0].toUpperCase() + s.slice(1) : ''
   }
 
   createFieldWCurLang(key: string) {
@@ -21,26 +21,34 @@ export class UtilsService {
         'ru'
         // this.translateService.currentLang ? this.translateService.currentLang : 'ru'
       )
-    );
+    )
   }
 
   dateFormat(date) {
-    return moment(date).format('YYYY-MM-DD');
+    return moment(date).format('YYYY-MM-DD')
   }
 
   createUrlParams(params: Params[]) {
-    let urlParam: any = '';
+    let urlParam: any = ''
     params.map((item: any) => {
-      const { name, value } = item;
+      const { name, value } = item
       if (value !== undefined) {
-        urlParam += `&${name}=${value}`;
+        urlParam += `&${name}=${value}`
       }
-    });
+    })
 
     if (urlParam) {
-      urlParam = `?${urlParam.substr(1, urlParam.length - 1)}`;
+      urlParam = `?${urlParam.substr(1, urlParam.length - 1)}`
     }
 
-    return urlParam;
+    return urlParam
+  }
+
+  isEmpty(val): boolean {
+    if (val === '' || typeof val === 'undefined' || val === null) {
+      return true
+    } else {
+      return false
+    }
   }
 }

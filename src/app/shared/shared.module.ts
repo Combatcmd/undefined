@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { SearchService } from './services/search.service';
+import { EntryService } from './services/entry.service';
 import { UtilsService } from './utils/utils.service';
 import { AccountService } from './auth/account.service';
 import { AuthServerProvider } from './auth/auth-jwt.service';
@@ -17,6 +18,7 @@ import { WindowRef } from './tracker/window.service';
   declarations: [],
   providers: [
     SearchService,
+    EntryService,
     UtilsService,
     StompRService,
     AccountService,
