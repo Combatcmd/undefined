@@ -1,4 +1,4 @@
-@include b(filter) {
+@include b(z-filter) {
   border-bottom: 1px solid $border-color-filter-divider;
   padding: 15px 0;
   &:first-child {
@@ -34,24 +34,6 @@
     padding: 12px 0;
     > div {
       cursor: pointer;
-    }
-  }
-  @include m(title) {
-    font-size: 16px;
-    font-weight: 700;
-    color: $text-color-filter-title;
-    display: flex;
-    align-items: center;
-    .button__icon {
-      display: flex;
-      svg {
-        path {
-          fill: $text-color-filter-title;
-        }
-        circle {
-          stroke: $text-color-filter-title;
-        }
-      }
     }
   }
   @include m(clear) {
@@ -246,27 +228,28 @@
     }
     width: 100%;
     position: relative;
-    .search__input,
-    .input--datepicker,
-    .search input,
-    input,
-    .dropdown-select,
-    .m-select,
-    .m-input {
-      height: 46px;
-      font-weight: 300;
-      font-size: 14px;
-      line-height: 17px;
-      color: $text-color-primary;
-      border-radius: 3px;
-      border: 1px solid $border-color-filter;
-      padding: 0 12px;
-      background-color: $container-bg-primary;
-      &::placeholder {
-        color: $text-color-primary;
-        opacity: 0.4;
-      }
-    }
+    height: 48px;
+    // .search__input,
+    // .input--datepicker,
+    // .search input,
+    // input,
+    // .dropdown-select,
+    // .m-select,
+    // .m-input {
+    //   height: 46px;
+    //   font-weight: 300;
+    //   font-size: 14px;
+    //   line-height: 17px;
+    //   color: $text-color-primary;
+    //   border-radius: 3px;
+    //   border: 1px solid $border-color-filter;
+    //   padding: 0 12px;
+    //   background-color: $container-bg-primary;
+    //   &::placeholder {
+    //     color: $text-color-primary;
+    //     opacity: 0.4;
+    //   }
+    // }
     .input__kato {
       padding-left: 30px;
       color: $text-color-primary;
@@ -415,5 +398,55 @@
         }
       }
     }
+  }
+}
+
+@include b(filter) {
+  @include e(container) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  @include e(title) {
+    border-bottom: 2px solid $border-color-filter-header;
+    padding-bottom: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-color-filter-title;
+    display: flex;
+    align-items: center;
+    .button__icon {
+      display: flex;
+      svg {
+        path {
+          fill: $text-color-filter-title;
+        }
+        circle {
+          stroke: $text-color-filter-title;
+        }
+      }
+    }
+  }
+  @include e(item) {
+    border-bottom: 1px solid $border-color-filter-divider;
+    padding: 15px 0;
+    &:first-child {
+      border-bottom: 0;
+    }
+  }
+  @include e(label) {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: $text-color-primary;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  @include e(layout) {
+    width: 100%;
+    position: relative;
+    height: 48px;
   }
 }

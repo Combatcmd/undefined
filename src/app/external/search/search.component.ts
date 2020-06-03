@@ -17,6 +17,12 @@ import {
   templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  filter: any = {
+    loc: undefined,
+    cust: undefined,
+    org: undefined
+  }
+
   tabs: 'advert' | 'lot' | 'plan'
   keyword: string
   deliveryKatoCode: any
@@ -112,13 +118,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     //   this.predicate = params['sort'] ? params['sort'].split(',')[0] : ''
     //   this.createQueryParams()
     // })
-    this.searchService.getAdvertList(
-      {
-        tenderSubjectTypes: [],
-        advertStatuses: ['PUBLISHED'],
-      },
-      { page: 1, size: 10 }
-    ).subscribe(res => console.log(res))
+    this.searchService
+      .getAdvertList(
+        {
+          tenderSubjectTypes: [],
+          advertStatuses: ['PUBLISHED'],
+        },
+        { page: 1, size: 10 }
+      )
+      .subscribe((res) => console.log(res))
     this.entryService.getOpenApi('tender_type').subscribe(
       (res) => {
         this.tenderTypes = res
@@ -130,6 +138,13 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
+  setFilter(event, type) {
+    this.filter[type] = event
+  }
+
+  clog(event) {
+    console.log(this.filter)
+  }
   filterTenderTypes() {
     if (this.tabs === 'plan') {
       this.beginAcceptanceBeginTime = null

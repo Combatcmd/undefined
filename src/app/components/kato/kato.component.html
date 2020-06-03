@@ -1,5 +1,5 @@
 <div class="kato__container">
-  <div class="kato__header" (click)="toggle()">
+  <div class="kato__header" (click)="toggleExpand()">
     <span>
       <svg
         width="14"
@@ -23,25 +23,20 @@
         />
       </svg>
     </span>
-    <p>Весь Казахстан</p>
-    <fa-icon [icon]="['fas', 'coffee']"></fa-icon>
+    <input [ngModel]="kato" disabled/>
+    <fa-icon
+      class="kato__icon"
+      [ngClass]="{'kato__icon--expanded': expanded}"
+      [icon]="['fas', 'chevron-down']"
+    ></fa-icon>
   </div>
-  <div class="kato__inner-container" [ngClass]="{'kato__inner-container--expanded': expanded}">
-    <div class="kato__input">
-      <input type="text" />
-    </div>
-    <div class="kato__list">
-      <ul>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-        <li>Весь Казахстан</li>
-      </ul>
-    </div>
+  <div
+    class="kato__inner-container"
+    [ngClass]="{'kato__inner-container--expanded': expanded}"
+  >
+    <input class="kato__input" type="text" (keyup)="onKeyInputUp($event)" />
+    <ul class="kato__list" *ngFor="let item of result">
+      <li (click)="setKato(item)">{{item?.ru}}</li>
+    </ul>
   </div>
 </div>

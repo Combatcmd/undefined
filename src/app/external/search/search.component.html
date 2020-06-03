@@ -11,7 +11,7 @@
   <div class="row search__content">
     <div class="col-3">
       <form name="filterForm" (ngSubmit)="find()">
-        <div class="row filter filter--title">
+        <div class="row filter__title">
           <div class="button__icon">
             <svg
               width="18"
@@ -46,12 +46,31 @@
           </div>
           Параметры поиска
         </div>
-        <div class="row filter">
-          <label for=""></label>
-          <div class="filter__layout">
-            <app-kato></app-kato>
+        <div class="filter__container">
+          <div class="row filter__item">
+            <label class="filter__label">Организатор</label>
+            <div class="filter__layout">
+              <app-autocomplete
+                (onSelectCompany)="setFilter($event, 'org')"
+              ></app-autocomplete>
+            </div>
+          </div>
+          <div class="row filter__item">
+            <label class="filter__label">Заказчик</label>
+            <div class="filter__layout">
+              <app-autocomplete
+                (onSelectCompany)="setFilter($event, 'cust')"
+              ></app-autocomplete>
+            </div>
+          </div>
+          <div class="row filter__item">
+            <label class="filter__label">Регион</label>
+            <div class="filter__layout">
+              <app-kato (onSelectKato)="setFilter($event, 'loc')"></app-kato>
+            </div>
           </div>
         </div>
+        <button (click)='clog(filter)'>sdsad</button>
 
         <!-- <div class="row filter">
           <label>Регион</label>

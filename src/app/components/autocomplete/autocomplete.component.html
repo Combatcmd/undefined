@@ -1,0 +1,14 @@
+<div class="autocomplete__container">
+  <div class="autocomplete__header">
+    <input [ngModel]="company" (keyup)="onKeyInputUp($event)" />
+    <fa-icon class="autocomplete__icon" [icon]="['fas', 'search']"></fa-icon>
+  </div>
+  <div
+    class="autocomplete__inner-container"
+    [ngClass]="{'autocomplete__inner-container--expanded': expanded}"
+  >
+    <ul class="autocomplete__list" *ngFor="let item of result">
+      <li (click)="setCompany(item.nameRu)">{{item?.nameRu}}</li>
+    </ul>
+  </div>
+</div>
