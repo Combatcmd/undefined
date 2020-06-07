@@ -1,0 +1,79 @@
+@include b(select) {
+  @include e(container) {
+    padding: 0 14px;
+    background: #ffffff;
+    border: 1px solid #d8d8e9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+    position: absolute;
+  }
+  @include e(header) {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    > div {
+      overflow: hidden;
+      > span {
+        white-space: nowrap;
+      }
+    }
+    span {
+      margin-right: 10px;
+    }
+  }
+  @include e(icon) {
+    display: flex;
+    margin-left: auto;
+    @include m(expanded) {
+      transform: rotate(180deg);
+    }
+  }
+  @include e(inner-container) {
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    @include m(expanded) {
+      max-height: 500px;
+      transition: max-height 0.3s ease-in;
+    }
+  }
+  @include e(input) {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #d8d8e9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 10px 0 20px 0;
+    padding: 0 10px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  @include e(list) {
+    li {
+      display: flex;
+      align-items: center;
+      height: 34px;
+    }
+    .checkbox {
+      flex: 0 0 auto;
+    }
+    span {
+      flex: 1 1 auto;
+    }
+    list-style: none;
+    padding-left: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.1;
+    color: #000000;
+  }
+}

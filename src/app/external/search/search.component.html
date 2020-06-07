@@ -48,6 +48,28 @@
         </div>
         <div class="filter__container">
           <div class="row filter__item">
+            <label class="filter__label">Статус закупки</label>
+            <div class="filter__layout">
+              <app-select
+                [key]="'code'"
+                [data]="advertStatusArray"
+                [multy]="true"
+                (onSelectItem)="setFilter($event, 'adst')"
+              ></app-select>
+            </div>
+          </div>
+          <div class="row filter__item">
+            <label class="filter__label">Способ закупки</label>
+            <div class="filter__layout">
+              <app-select
+                [key]="'code'"
+                [data]="tenderTypes"
+                [multy]="true"
+                (onSelectItem)="setFilter($event, 'pmet')"
+              ></app-select>
+            </div>
+          </div>
+          <div class="row filter__item">
             <label class="filter__label">Организатор</label>
             <div class="filter__layout">
               <app-autocomplete
@@ -66,11 +88,16 @@
           <div class="row filter__item">
             <label class="filter__label">Регион</label>
             <div class="filter__layout">
-              <app-kato (onSelectKato)="setFilter($event, 'loc')"></app-kato>
+              <app-select
+                [key]="'code'"
+                [type]="'kato'"
+                [data]="katoes"
+                (onSelectItem)="setFilter($event, 'loc')"
+              ></app-select>
             </div>
           </div>
         </div>
-        <button (click)='clog(filter)'>sdsad</button>
+        <button (click)="clog(filter)">sdsad</button>
 
         <!-- <div class="row filter">
           <label>Регион</label>

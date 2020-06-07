@@ -1,0 +1,28 @@
+@include b(checkbox) {
+  width: 16px;
+  height: 16px;
+  background: $container-bg-primary;
+  border: 1px solid $border-color-filter;
+  box-sizing: border-box;
+  border-radius: 1px;
+  position: relative;
+  margin-right: 5px;
+  @include m(checked) {
+    background: #56be89;
+    border-color: #56be89;
+    border-radius: 1px;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 5px;
+      border-left: 1.7px solid #fcfcfc;
+      border-bottom: 1.7px solid #fcfcfc;
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}

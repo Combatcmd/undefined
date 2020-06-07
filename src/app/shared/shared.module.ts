@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 
 import { SearchService } from './services/search.service';
 import { EntryService } from './services/entry.service';
+import { KatoService } from './services/kato.service';
 import { UtilsService } from './utils/utils.service';
 import { AccountService } from './auth/account.service';
 import { AuthServerProvider } from './auth/auth-jwt.service';
@@ -19,6 +20,7 @@ import { WindowRef } from './tracker/window.service';
   providers: [
     SearchService,
     EntryService,
+    KatoService,
     UtilsService,
     StompRService,
     AccountService,

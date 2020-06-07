@@ -1,5 +1,6 @@
 export * from './services/search.service';
 export * from './services/entry.service';
+export * from './services/kato.service';
 
 export * from './utils/request-util';
 export * from './utils/utils.service';

@@ -1,0 +1,43 @@
+<div class="select__container">
+  <div class="select__header" (click)="toggleExpand()">
+    <span *ngIf="type === 'kato'">
+      <fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon>
+    </span>
+
+    <div *ngIf="multy" [title]="title">
+      <span *ngFor="let option of options; let isLast = last"
+        >{{option.ru}}{{isLast ? '' : ','}}</span
+      >
+    </div>
+    <div *ngIf="!multy" [title]="option?.ru">
+      <span>{{option?.ru}}</span>
+    </div>
+
+    <fa-icon
+      class="select__icon"
+      [ngClass]="{'select__icon--expanded': expanded}"
+      [icon]="['fas', 'chevron-down']"
+    ></fa-icon>
+  </div>
+  <div
+    class="select__inner-container"
+    [ngClass]="{'select__inner-container--expanded': expanded}"
+  >
+    <input
+      *ngIf="type === 'kato'"
+      class="select__input"
+      type="text"
+      (keyup)="searchOptionsHandler($event)"
+    />
+    <ul class="select__list">
+      <li (click)="setOptionsHandler(item)" *ngFor="let item of data">
+        <div
+          *ngIf="multy"
+          class="checkbox"
+          [ngClass]="{'checkbox--checked':item.checked}"
+        ></div>
+        <span>{{item.ru}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
